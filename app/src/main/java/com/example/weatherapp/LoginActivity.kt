@@ -85,7 +85,7 @@ fun LoginPage(modifier: Modifier = Modifier) {
                 onClick = {
                     Toast.makeText(activity, "Login OK!", Toast.LENGTH_LONG).show()
                     activity?.startActivity(
-                        Intent(activity, HomePage::class.java).setFlags(
+                        Intent(activity, HomeActivity::class.java).setFlags(
                             FLAG_ACTIVITY_SINGLE_TOP
                         )
                     )
@@ -101,6 +101,15 @@ fun LoginPage(modifier: Modifier = Modifier) {
             ) {
                 Text("Limpar")
             }
+            Button(
+                onClick = { activity?.startActivity(
+                    Intent(activity, RegisterActivity::class.java).setFlags(
+                        FLAG_ACTIVITY_SINGLE_TOP
+                    )
+                ) }
+            ) {
+                Text("Registro")
+            }
         }
     }
 }
@@ -108,7 +117,7 @@ fun LoginPage(modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview2() {
+fun LoginPreview() {
     WeatherAppTheme {
         LoginPage()
     }

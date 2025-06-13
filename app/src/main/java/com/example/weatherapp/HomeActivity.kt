@@ -2,7 +2,6 @@ package com.example.weatherapp
 
 import android.app.Activity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -21,7 +20,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 
-class HomePage : ComponentActivity() {
+class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -62,8 +61,8 @@ fun HomePage( modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun HomePreview() {
     WeatherAppTheme {
-        HomePage()
+        HomeActivity()
     }
 }
