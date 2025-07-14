@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.weatherapp.ui.HomePage
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 
 class HomeActivity : ComponentActivity() {
@@ -36,28 +37,6 @@ class HomeActivity : ComponentActivity() {
     }
 }
 
-@Composable
-fun HomePage( modifier: Modifier = Modifier) {
-    val activity = LocalContext.current as? Activity
-    Column(
-        modifier = modifier.padding(16.dp).fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "OLA!",
-            modifier = modifier
-        )
-        Button(
-            onClick = {
-                activity?.finish()
-            }
-
-        ) {
-            Text(text = "Sair")
-        }
-    }
-}
 
 @Preview(showBackground = true)
 @Composable
