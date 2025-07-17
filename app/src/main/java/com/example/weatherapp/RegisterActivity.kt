@@ -31,6 +31,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.Button
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 class RegisterActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,8 +119,17 @@ fun RegisterPage(modifier: Modifier = Modifier) {
             Button(
                 onClick = {
                     if (password == confirmPassword && name.isNotBlank() && email.isNotBlank()) {
-                        Toast.makeText(activity, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show()
-                        activity?.finish();
+                        Firebase.auth.createUserWithEmailAndPassword(email, password)
+                            .addOnCompleteListener(activity!!) { task ->
+                                if (task.isSuccessful) {
+                                    Toast.makeText(activity,
+                                        "Registro OK!", Toast.LENGTH_LONG).show()
+                                    activity.finish()
+                                } else {
+                                    Toast.makeText(activity,
+                                        "Registro FALHOU!", Toast.LENGTH_LONG).show()
+                                }
+                            }
                     } else {
                         Toast.makeText(activity, "Verifique os campos!", Toast.LENGTH_LONG).show()
                     }

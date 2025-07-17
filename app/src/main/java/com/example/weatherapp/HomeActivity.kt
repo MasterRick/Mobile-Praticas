@@ -37,6 +37,8 @@ import com.example.weatherapp.ui.nav.MainNavHost
 import com.example.weatherapp.ui.theme.WeatherAppTheme
 import androidx.navigation.NavDestination.Companion.hasRoute
 import com.example.weatherapp.ui.nav.Route
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 
 class HomeActivity : ComponentActivity() {
@@ -66,7 +68,10 @@ class HomeActivity : ComponentActivity() {
                         TopAppBar(
                             title = { Text("Bem-vindo/a!") },
                             actions = {
-                                IconButton( onClick = { finish() } ) {
+                                IconButton( onClick = {
+                                    Firebase.auth.signOut()
+                                    finish()
+                                } ) {
                                     Icon(
                                         imageVector =
                                             Icons.Default.ExitToApp,
