@@ -5,3 +5,14 @@ plugins {
     kotlin("plugin.serialization") version "2.2.0" apply false
 
 }
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath (
+            libs.secrets.gradle.plugin)
+    }
+}
