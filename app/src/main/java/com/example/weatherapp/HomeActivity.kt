@@ -1,6 +1,5 @@
 package com.example.weatherapp
 
-import MainViewModel
 import android.Manifest
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -70,7 +69,6 @@ class HomeActivity : ComponentActivity() {
                             actions = {
                                 IconButton( onClick = {
                                     Firebase.auth.signOut()
-                                    finish()
                                 } ) {
                                     Icon(
                                         imageVector =

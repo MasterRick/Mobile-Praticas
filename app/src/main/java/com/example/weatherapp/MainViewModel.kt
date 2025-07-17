@@ -1,3 +1,5 @@
+package com.example.weatherapp
+
 import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
 import com.example.weatherapp.data.model.City
