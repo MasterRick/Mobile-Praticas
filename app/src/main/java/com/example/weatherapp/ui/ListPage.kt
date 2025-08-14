@@ -20,6 +20,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -37,6 +38,12 @@ fun ListPage(modifier: Modifier = Modifier, viewModel: MainViewModel) {
             .padding(8.dp)
     ) {
         items(cityList, key = { it.name }) { city ->
+            LaunchedEffect(city.name) {
+                if (city.weather == null) {
+                    viewModel.loadWeather(city.name)
+                }
+            }
+
             CityItem( city = city,
                 onClick = {
                     Toast.makeText(activity, "Clicou em ${city.name}", Toast.LENGTH_SHORT).show()
@@ -69,7 +76,7 @@ fun CityItem(
                 text = city.name,
                 fontSize = 24.sp)
             Text(modifier = Modifier,
-                text = city.weather?:"Carregando clima...",
+                text = city.weather?.desc?:"carregando...",
                 fontSize = 16.sp)
         }
         IconButton(onClick = onClose) {
