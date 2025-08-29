@@ -24,8 +24,11 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import com.example.weatherapp.R
 import com.example.weatherapp.data.model.City
 import com.example.weatherapp.ui.nav.Route
 
@@ -82,9 +85,13 @@ fun CityItem(
                 text = city.weather?.desc?:"carregando...",
                 fontSize = 16.sp)
         }
-        IconButton(onClick = onClose) {
-            Icon(Icons.Filled.Close, contentDescription = "Close")
-        }
+        AsyncImage(
+            model = city.weather?.imgUrl,
+            modifier = Modifier.size(75.dp),
+            error = painterResource(id = R.drawable.loading),
+            contentDescription = "Imagem"
+        )
+
     }
     }
 
