@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.weatherapp.R
 import com.example.weatherapp.data.model.City
+import com.example.weatherapp.ui.nav.BottomNavItem.HomeButton.icon
 import com.example.weatherapp.ui.nav.Route
 
 @Composable
@@ -47,6 +48,12 @@ fun ListPage(modifier: Modifier = Modifier, viewModel: MainViewModel) {
                     viewModel.loadWeather(city.name)
                 }
             }
+
+            Icon(
+                imageVector = icon, contentDescription = "Monitorada?",
+                modifier = Modifier.size(32.dp)
+            )
+
 
             CityItem( city = city,
                 onClick = {

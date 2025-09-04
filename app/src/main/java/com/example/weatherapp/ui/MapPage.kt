@@ -72,28 +72,5 @@ fun MapPage(modifier: Modifier = Modifier, viewModel: MainViewModel) {
             }
 
         }
-
-        Marker(
-            state = MarkerState(position = recife),
-            title = "Recife",
-            snippet = "Marcador em Recife",
-            icon = BitmapDescriptorFactory.defaultMarker(
-                BitmapDescriptorFactory.HUE_BLUE)
-        )
-        Marker(
-            state = MarkerState(position = caruaru),
-            title = "Recife",
-            snippet = "Marcador em Caruaru",
-            icon = BitmapDescriptorFactory.defaultMarker(
-                BitmapDescriptorFactory.HUE_RED)
-        )
-        Marker(
-            state = MarkerState(position = joaopessoa),
-            title = "Recife",
-            snippet = "Marcador em João Pessoa",
-            icon = BitmapDescriptorFactory.defaultMarker(
-                BitmapDescriptorFactory.HUE_MAGENTA)
-        )
-
     }
 }

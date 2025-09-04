@@ -31,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.weatherapp.R
 import com.example.weatherapp.data.model.Forecast
+import com.example.weatherapp.ui.nav.BottomNavItem.HomeButton.icon
 import java.text.DecimalFormat
 
 @Composable
@@ -59,6 +60,7 @@ fun HomePage(viewModel: MainViewModel) {
                     Spacer(modifier = Modifier.size(12.dp))
                     Text( text = viewModel.city?.name ?: "Selecione uma cidade...",
                         fontSize = 28.sp )
+
                     Spacer(modifier = Modifier.size(12.dp))
                     Text( text = viewModel.city?.weather?.desc ?: "...",
                         fontSize = 22.sp )
@@ -66,6 +68,15 @@ fun HomePage(viewModel: MainViewModel) {
                     Text( text = "Temp: " + viewModel.city?.weather?.temp + "℃",
                         fontSize = 22.sp )
                 }
+                Icon(
+                    imageVector = icon, contentDescription = "Monitorada?",
+                    modifier = Modifier.size(32.dp).clickable(enabled=viewModel.city != null){
+                        viewModel.update(
+                            viewModel.city!!.copy(
+                                isMonitored = !viewModel.city!!.isMonitored))
+                    }
+                )
+
             }
             LaunchedEffect(viewModel.city!!.name) {
                 if (viewModel.city!!.forecast == null ||
@@ -81,6 +92,7 @@ fun HomePage(viewModel: MainViewModel) {
                     }
                 }
             }
+
         }
     }
 }
